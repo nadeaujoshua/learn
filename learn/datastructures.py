@@ -63,4 +63,36 @@ class MyStack:
         if to_pop:
             self.top = to_pop.next
         return to_pop.value
-            
+
+
+class MyQueue:
+    """A single-ended queue using NodeLinkedList."""
+
+    def __init__(self):
+        self.front = None
+        self.rear = None
+    
+    def peek(self):
+        """Return the value of the node at the front of the queue."""
+        front = self.front
+        if front:
+            return front.value
+    
+    def enqueue(self, value):
+        """Add a node with given value to the end of the queue."""
+        new_node = NodeLinkedList(value)
+        if not self.front:
+            self.front = new_node
+            self.rear = new_node
+        else:
+            self.rear.next = new_node
+            self.rear = new_node
+
+    def dequeue(self):
+        """Remove the node at the front of the queue and return its value."""
+        front = self.front
+        if front:
+            self.front = self.front.next
+            if not self.front:
+                self.rear = None
+            return front.value

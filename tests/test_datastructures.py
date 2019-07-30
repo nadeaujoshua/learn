@@ -55,3 +55,35 @@ def test_MyStack():
     s.pop()
     s.pop()
     assert not s.top
+
+
+def test_MyQueue():
+    q = datastructures.MyQueue()
+    assert not q.front
+    assert not q.rear
+    assert not q.peek()
+    assert not q.dequeue()
+
+    q.enqueue(1)
+    assert q.front.value == 1
+    assert q.rear.value == 1
+    assert q.peek() == 1
+    assert q.front.value == 1
+
+    assert q.dequeue() == 1
+    assert not q.front
+    assert not q.rear
+    assert not q.peek()
+    assert not q.dequeue()
+
+    q.enqueue(2)
+    q.enqueue(3)
+    assert q.front.value == 2
+    assert q.rear.value == 3
+    assert q.peek() == 2
+    assert q.front.value == 2
+    q.enqueue(1)
+    assert q.front.value == 2
+    assert q.rear.value == 1
+    assert q.peek() == 2
+    assert q.front.value == 2
