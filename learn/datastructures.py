@@ -22,6 +22,21 @@ class LinkedList:
             while current_node.next:
                 current_node = current_node.next
             current_node.next = new_node
+    
+    def linear_search(self, value):
+        """Search for given value within nodes linearly.
+        
+        Return index if value exists in list, or -1 if not.
+        """
+        current_node = self.head
+        counter = 0
+        while current_node:
+            if current_node.value == value:
+                return counter
+            else:
+                current_node = current_node.next
+                counter += 1
+        return -1
 
 
 class MyStack:
