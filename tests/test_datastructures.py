@@ -26,6 +26,12 @@ def test_LinkedList():
     assert l.head.next.value == 'test2'
     assert not l.head.next.next
 
+    l.add('test3')
+    assert l.linear_search('test3') == 2
+    assert l.linear_search('test2') == 1
+    assert l.linear_search('test1') == 0
+    assert l.linear_search('test4') == -1
+
 
 def test_MyStack():
     s = datastructures.MyStack()
