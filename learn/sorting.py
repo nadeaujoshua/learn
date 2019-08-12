@@ -30,6 +30,21 @@ def _selection_sort(a_list):
         last -= 1
 
 
+def _selection_sort_alt(a_list):
+    """Sort by looking for i-th smallest values."""
+    length = len(a_list)
+    destination = 0
+    while destination < length:
+        min_ = destination
+        i = destination + 1
+        while i < length:
+            if a_list[i] < a_list[min_]:
+                min_ = i
+            i += 1
+        a_list[destination], a_list[min_] = a_list[min_], a_list[destination]
+        destination += 1
+
+
 def _insertion_sort(a_list):
     """Sort an unsorted Python list in place using insertion sort."""
     last = len(a_list) - 1
@@ -42,3 +57,32 @@ def _insertion_sort(a_list):
             to_place_pos -= 1
         a_list[to_place_pos] = to_sort_val
         i += 1
+
+
+def _merge_sort(a_list):
+    """Sort an unsorted Python list recursively using merge sort."""
+    length = len(a_list)
+    if len(a_list) == 1:
+        return a_list
+    else:
+        middle = length // 2
+        a = _merge_sort(a_list[:middle])
+        b = _merge_sort(a_list[middle:])
+        i, j, k = 0, 0, 0
+        while i < len(a) and j < len(b):
+            if a[i] < b[j]:
+                a_list[k] = a[i]
+                i += 1
+            else:
+                a_list[k] = b[j]
+                j += 1
+            k += 1
+        while i < len(a):
+            a_list[k] = a[i]
+            i += 1
+            k += 1
+        while j < len(b):
+            a_list[k] = b[j]
+            j += 1
+            k += 1
+        return a_list
