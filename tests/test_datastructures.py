@@ -87,3 +87,28 @@ def test_MyQueue():
     assert q.rear.value == 1
     assert q.peek() == 2
     assert q.front.value == 2
+
+
+def test_MyBinaryTree():
+    new_tree = datastructures.MyBinaryTree('a')
+    assert new_tree.key == 'a'
+    assert new_tree.left_child is None
+    assert new_tree.right_child is None
+
+    new_tree.insert_left('b')
+    assert new_tree.key == 'a'
+    assert new_tree.left_child.key == 'b'
+    assert new_tree.left_child.left_child is None
+    assert new_tree.right_child is None
+    new_tree.insert_left('c')
+    assert new_tree.left_child.key == 'c'
+    assert new_tree.right_child is None
+    assert new_tree.left_child.left_child.key == 'b'
+    assert new_tree.left_child.left_child.left_child is None
+    assert new_tree.left_child.left_child.right_child is None
+
+    new_tree.insert_right('x')
+    assert new_tree.right_child.key == 'x'
+    assert new_tree.right_child.left_child is None
+    assert new_tree.right_child.right_child is None
+    assert new_tree.left_child.key == 'c'

@@ -96,3 +96,24 @@ class MyQueue:
             if not self.front:
                 self.rear = None
             return front.value
+
+
+class MyBinaryTree:
+    """A binary tree."""
+
+    def __init__(self, root_object):
+        self.key = root_object
+        self.left_child = None
+        self.right_child = None
+    
+    def insert_left(self, new_obj):
+        new_tree = MyBinaryTree(new_obj)
+        if self.left_child:
+            new_tree.left_child = self.left_child
+        self.left_child = new_tree
+    
+    def insert_right(self, new_obj):
+        new_tree = MyBinaryTree(new_obj)
+        if self.right_child:
+            new_tree.right_child = self.right_child
+        self.right_child = new_tree
