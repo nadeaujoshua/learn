@@ -89,26 +89,25 @@ def test_MyQueue():
     assert q.front.value == 2
 
 
-def test_MyBinaryTree():
-    new_tree = datastructures.MyBinaryTree('a')
-    assert new_tree.key == 'a'
-    assert new_tree.left_child is None
-    assert new_tree.right_child is None
+def test_MyBSTreeNode():
+    new_tree = datastructures.MyBSTreeNode(5)
+    assert new_tree.data == 5
+    assert new_tree.left is None
+    assert new_tree.right is None
 
-    new_tree.insert_left('b')
-    assert new_tree.key == 'a'
-    assert new_tree.left_child.key == 'b'
-    assert new_tree.left_child.left_child is None
-    assert new_tree.right_child is None
-    new_tree.insert_left('c')
-    assert new_tree.left_child.key == 'c'
-    assert new_tree.right_child is None
-    assert new_tree.left_child.left_child.key == 'b'
-    assert new_tree.left_child.left_child.left_child is None
-    assert new_tree.left_child.left_child.right_child is None
+    new_tree.insert(3)
+    assert new_tree.left.data == 3
+    assert new_tree.left.left is None
+    assert new_tree.left.right is None
+    assert new_tree.right is None
 
-    new_tree.insert_right('x')
-    assert new_tree.right_child.key == 'x'
-    assert new_tree.right_child.left_child is None
-    assert new_tree.right_child.right_child is None
-    assert new_tree.left_child.key == 'c'
+    new_tree.insert(6)
+    assert new_tree.right.data == 6
+    assert new_tree.right.right is None
+    assert new_tree.left.data == 3
+
+    new_tree.insert(4)
+    assert new_tree.left.right.data == 4
+    assert new_tree.left.right.left is None
+    assert new_tree.left.right.right is None
+    assert new_tree.right.data == 6
